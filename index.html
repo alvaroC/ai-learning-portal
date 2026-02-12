@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Hub | Introduktion till AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="updates.css">
+    <link rel="stylesheet" href="notion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</head>
+
+<body class="dark-theme">
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <h1>AI Learning Hub</h1>
+            </div>
+            <h2 class="subtitle"><span class="academy-name">Be an AI-Hero with SwedAI Academy</span></h2>
+        </div>
+    </header>
+
+    <nav class="module-nav">
+        <div class="container">
+            <ul class="nav-list">
+
+                <li><button class="nav-btn active" data-module="dashboard"><i
+                            class="fas fa-th-large"></i>Dashboard</button></li>
+
+                <li><button class="nav-btn ai-konsult-btn" data-module="ai-konsult">
+                        <img src="assets/ui/ai-konsult-avatar.png" alt="AI-Konsult" class="konsult-avatar"
+                            onerror="this.style.display='none'">
+                        AI-Konsult
+                    </button></li>
+
+                <li><a href="https://ghl-academy.com" target="_blank" class="nav-btn academy-btn">SwedAI Academy</a>
+                </li>
+
+                <li><a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank"
+                        class="nav-btn community-btn">Community</a></li>
+
+
+            </ul>
+        </div>
+    </nav>
+
+    <main id="app-content" class="container">
+        <!-- Content will be rendered here by app.js -->
+        <div class="loading">
+            <div class="spinner"></div>
+            <p>Laddar lärandemoduler...</p>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 AI Learning Hub | Baserat på realtidsdata från NotebookLM</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <!-- Course Data (Content) -->
+    <script src="course_data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

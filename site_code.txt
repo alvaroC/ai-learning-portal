@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e40af">
+    <title id="page-title">Nuvion - Laddboxar för Bostadsrättsföreningar</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #1e3a8a;
+            --accent-color: #3b82f6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --background-light: #f1f5f9;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
+            --border-radius: 16px;
+            --orange: #f97316;
+
+            /* Add these for dynamic section backgrounds */
+            --agent-section-bg: #e0f2fe;
+            --product-section-bg: #ffffff;
+            --capabilities-section-bg: #f1f5f9;
+            --social-section-bg: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+        }
+
+        /* HEADER */
+        .header {
+            background: var(--primary-color);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-cta {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--secondary-color);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(30, 64, 175, 0.7), rgba(59, 130, 246, 0.4)), url('images/Backgrund.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--white);
+            padding: 6rem 2rem 3rem;
+            text-align: center;
+            margin-top: 80px;
+            position: relative;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: snow;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* AGENT SHOWCASE SECTION */
+        .agent-showcase {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            background: var(--agent-section-bg);
+        }
+
+        .agent-showcase h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .showcase-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        /* Left side - Agent Widget */
+        .agent-widget-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .agent-widget-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .agent-widget-subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .agent-iframe-container {
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: 0.25rem;
+            box-shadow: var(--shadow);
+        }
+
+        .agent-iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            border-radius: calc(var(--border-radius) - 0.5rem);
+            background: var(--white);
+        }
+
+        /* Iframe wrapper styling */
+        .chat-agent-wrapper {
+            width: 100%;
+            margin: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .chat-agent-iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            display: block;
+        }
+
+        .iframe-placeholder {
+            text-align: center;
+            color: var(--text-light);
+            padding: 2rem;
+        }
+
+        .iframe-placeholder i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Right side - Content sections */
+        .content-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100vh;
+        }
+
+        .content-card {
+            padding-top: 80px;
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .content-card.horizontal {
+            flex-direction: row;
+            min-height: calc(50vh - 0.5rem);
+        }
+
+        .content-image {
+            flex: 1;
+            background: var(--primary-color);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2.5rem;
+            min-height: 200px;
+            position: relative;
+        }
+
+        .content-text {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .content-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        .content-text p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .content-text img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .benefit-tag {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* PRODUCT FOCUS SECTION */
+        .product-focus {
+            padding: 4rem 2rem;
+            background: var(--white);
+            background: var(--product-section-bg);
+        }
+
+        .product-focus h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .product-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .product-info p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* AGENT CAPABILITIES SECTION */
+        .agent-capabilities {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            background: var(--capabilities-section-bg);
+        }
+
+        .capabilities-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .capabilities-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .capability-card {
+            background: var(--background-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .capability-card i {
+            color: var(--primary-color);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .capability-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .capability-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .ask-agent {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+
+        /* SOCIAL PROOF SECTION */
+        .social-proof {
+            padding: 4rem 2rem;
+            background: var(--background-light);
+            background: var(--social-section-bg);
+        }
+
+        .proof-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .proof-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial .stars {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial blockquote {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .testimonial cite {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat .label {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* FINAL CTA SECTION */
+        .final-cta {
+            background: linear-gradient(135deg, var(--text-dark), #555);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cta-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-container p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: var(--orange);
+            color: var(--white);
+            padding: 1.5rem 3rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button:hover {
+            background: #ea580c;
+        }
+
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.8;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            opacity: 0.6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            .showcase-container,
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .stats {
+                gap: 2rem;
+            }
+        }
+
+        /* Hidden elements for data storage */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>  
+
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <i id="company-icon" class="fas fa-bolt"></i>
+                <span class="company-name">Nuvion</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hem">Hem</a></li>
+                <li><a href="#tjänster">Tjänster</a></li>
+                <li><a href="#om-oss">Om oss</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <a href="#" class="nav-cta" id="nav-cta-btn">Prata med Emma</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1 id="hero-title">Professionella laddlösningar för BRF, företag och hem</h1>
+            <p id="hero-subtitle">Vi installerar och servar laddboxar med expertis inom föreningsfrågor och elmobilitet
+            </p>
+        </div>
+    </section>
+
+    <!-- AGENT SHOWCASE SECTION -->
+    <section class="agent-showcase">
+        <h2>LADDBOXAR FÖR BOSTADSRÄTTSFÖRENINGAR</h2>
+        <div class="showcase-container">
+
+            <!-- Left side - Agent Widget -->
+            <div class="agent-widget-section">
+
+                <div class="agent-iframe-container">
+                    <div class="iframe-placeholder" id="iframe-placeholder">
+                        <iframe id="agent-iframe-url" src="https://laddboxar.netlify.app/" class="chat-agent-iframe"
+                            title="AI Chat Assistant"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right side - Content sections -->
+            <div class="content-sections">
+                <!-- Upper content card -->
+                <div class="content-card horizontal">
+                    <div class="content-text">
+                        <h3 id="content-title-1">Prata med experten Emma</h3>
+                        <p id="content-desc-1">Klicka på "Start a Call" till vänster och låt Emma guida dig med rätt
+                            lösningar för din förening.</p>
+                        <img src="images/Call center.png" alt="Emma - Laddboxexpert">
+                    </div>
+                </div>
+
+                <!-- Lower content card -->
+                <div class="content-card horizontal">
+                    <div class="content-text" style="order: 2;">
+                        <h3 id="content-title-2">Specialister på Bostadsrättsföreningar</h3>
+                        <p id="content-desc-2">Vi förstår föreningens unika behov och juridiska krav</p>
+                        <img src="images/Laddboxar.jpg" alt="Laddboxar för bostadsrättsföreningar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT FOCUS SECTION -->
+    <section class="product-focus">
+        <h2>VÅRT ERBJUDANDE</h2>
+        <div class="product-container">
+            <div class="product-image" id="product-image">
+                <img src="images/Laddboxar2.jpg" alt="Laddboxar för bostadsrättsföreningar">
+            </div>
+
+            <div class="product-info">
+                <h2 id="product-title">Komplett BRF-Laddlösning</h2>
+                <h3 id="product-desc1">Vi tar hand om hela resan – från första behovsanalys till färdig installation av
+                    moderna laddboxar</h3><br>
+                <li>Specialister på BRF (bostadsrättsföreningar) – med juridisk kompetens som underlättar beslut i
+                    styrelsen</li>
+                <li>Trygg kvalitet – auktoriserade elektriker och beprövad teknik</li>
+                <li>Full support – vi finns med genom hela processen, från offert till serviceavtal</li>
+                <li>Erfarenhet – många års arbete med laddinfrastruktur för hem, BRF och företag</li><br>
+                <p>Prata med Emma, vår AI-agent. Boka en kostnadsfri konsultation direkt: Klicka på "Start a Call" högst
+                    upp till vänster</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AGENT CAPABILITIES SECTION -->
+    <section class="agent-capabilities">
+        <div class="capabilities-container">
+            <h2><span id="agent-name-capabilities">Emma</span> hjälper dig med att...</h2>
+
+            <div class="capabilities-grid">
+
+                <div class="capability-card">
+                    <i id="capability-icon-1" class="fas fa-calculator"></i>
+                    <h5 id="capability-title-1">KOSTNADSBERÄKNING</h5>
+                    <p id="capability-desc-1">Få en kostnadskalkyl för laddboxinstallation i din förening.</p>
+                </div>
+
+                <div class="capability-card">
+                    <i id="capability-icon-2" class="fas fa-building"></i>
+                    <h5 id="capability-title-2">FÖRENINGSRÅDGIVNING</h5>
+                    <p id="capability-desc-2">Få juridisk vägledning för bostadsrättsföreningar om laddboxar.</p>
+                </div>
+
+                <div class="capability-card">
+                    <i id="capability-icon-3" class="fas fa-tools"></i>
+                    <h5 id="capability-title-3">INSTALLATION</h5>
+                    <p id="capability-desc-3">Berätta om installation och visar videoklipp om hur professionell
+                        installation går till</p>
+
+                </div>
+
+                <div class="capability-card">
+                    <i id="capability-icon-4" class="fas fa-question"></i>
+                    <h5 id="capability-title-4">FRÅGOR & INVÄNDINGAR</h5>
+                    <p id="capability-desc-4">Svara på frågor och invändningar kring laddboxar som dina potentiella
+                        kunder har</p>
+                </div>
+
+
+                <div class="capability-card">
+                    <i id="capability-icon-4" class="fas fa-handshake"></i>
+                    <h5 id="capability-title-4">BOOKA MÖTE & ANALYS</h5>
+                    <p id="capability-desc-4">Boka ett kostnadsfritt möte och skicka en analys av mötet till ditt Sales
+                        team</p>
+                </div>
+
+            </div>
+            <br>
+            <h3 class="ask-agent"> <span>EMMA</span>: KAN GÖRA ALLT DETTA OCH MYCKET MER! NYFIKEN? KLICKA PÅ "START A
+                CALL" HÖGST UPP</h3>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF SECTION -->
+    <section class="social-proof">
+        <div class="proof-container">
+            <h2>Vad säger föreningar som pratat med <span id="agent-name-testimonials">Emma</span>?</h2>
+
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <blockquote id="testimonial-1">"Emma hjälpte vår förening förstå alla juridiska aspekter. Mycket
+                        professionell!"
+                    </blockquote>
+                    <cite>— Styrelsen, BRF Solbacken</cite>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <blockquote id="testimonial-2">"Tack vare Emma fick vi rätt laddlösning för vår förening.
+                        Rekommenderar varmt!"</blockquote>
+                    <cite>— Maria L., Ordförande</cite>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <blockquote id="testimonial-3">"Snabb och kunnig service. Emma svarade på alla våra frågor direkt."
+                    </blockquote>
+                    <cite>— Johan K., Styrelseledamot</cite>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="number" id="stat-number-1">500+</div>
+                    <div class="label" id="stat-label-1">Nöjda föreningar</div>
+                </div>
+
+                <div class="stat">
+                    <div class="number" id="stat-number-2">4.9/5</div>
+                    <div class="label" id="stat-label-2">Genomsnittbetyg</div>
+                </div>
+
+                <div class="stat">
+                    <div class="number" id="stat-number-3">24/7</div>
+                    <div class="label" id="stat-label-3">Tillgänglighet</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="final-cta">
+        <div class="cta-container">
+            <h2 id="final-cta-title">Redo att installera laddboxar i er förening?</h2>
+            <p id="final-cta-desc">Emma väntar på att hjälpa er med en kostnadsfri konsultation om laddlösningar för
+                bostadsrättsföreningar.</p>
+
+            <a href="#" class="cta-button" onclick="startChat()">
+                <i class="fas fa-comments"></i>
+                <span id="final-cta-button">Prata med Emma nu: Klicka på "Start a Call" högst upp</span>
+            </a>
+
+            <div class="trust-indicators">
+                <div class="trust-indicator">
+                    <i class="fas fa-check"></i>
+                    <span>Kostnadsfri rådgivning</span>
+                </div>
+                <div class="trust-indicator">
+                    <i class="fas fa-clock"></i>
+                    <span>Svar inom 30 sekunder</span>
+                </div>
+                <div class="trust-indicator">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Säker och privat</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="company-name-display">Nuvion</h3>
+                <p id="footer-company-desc">Din partner för professionella laddlösningar till bostadsrättsföreningar.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>Email: info@nuvion.se</p>
+                <p>Telefon: 08-123 456 78</p>
+                <p>Adress: Storgatan 1, Stockholm</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Snabblänkar</h3>
+                <p><a href="#hem">Hem</a></p>
+                <p><a href="#tjänster">Tjänster</a></p>
+                <p><a href="#om-oss">Om oss</a></p>
+                <p><a href="#kontakt">Kontakt</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Support</h3>
+                <p><a href="#" onclick="startChat()">Prata med <span class="agent-name-link">Emma</span> 24/7</a></p>
+                <p><a href="#faq">Vanliga frågor</a></p>
+                <p><a href="#support">Hjälp & Support</a></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 <span class="company-name-display">Nuvion</span>. Alla rättigheter förbehållna.</p>
+        </div>
+    </footer>
+
+    <script>
+        // URL PARAMETER PARSING FOR WEBSITE TEMPLATE
+        function parseURLParameters() {
+            const hash = window.location.hash.substring(1);
+            if (!hash) return;
+
+            const params = hash.split(',');
+            console.log('Website Template Parameters received:', params);
+
+            if (params.length >= 16) {
+                const [
+                    primary, secondary, accent, sectionBg1, sectionBg2, sectionBg3, sectionBg4, companyName, heroTitle, heroSubtitle,
+                    agentName, agentTitle, agentIframeUrl, productTitle, productDescription, finalCtaTitle
+                ] = params;
+
+                // Update CSS variables for colors
+                const root = document.documentElement;
+                root.style.setProperty('--primary-color', `#${primary}`);
+                root.style.setProperty('--secondary-color', `#${secondary}`);
+                root.style.setProperty('--accent-color', `#${accent}`);
+
+                // Add these to dynamically set section backgrounds
+                // Använd faktiska färgparametrar från URL:en:
+                root.style.setProperty('--agent-section-bg', `#${sectionBg1}`);
+                root.style.setProperty('--product-section-bg', `#${sectionBg2}`);
+                root.style.setProperty('--capabilities-section-bg', `#${sectionBg3}`);
+                root.style.setProperty('--social-section-bg', `#${sectionBg4}`);
+
+                // Update meta theme color
+                //document.querySelector('meta[name="theme-color"]').content = `#${primary}`;
+
+                // Decode text content
+                const decodedCompanyName = decodeURIComponent(companyName.replace(/\+/g, ' '));
+                const decodedHeroTitle = decodeURIComponent(heroTitle.replace(/\+/g, ' '));
+                const decodedHeroSubtitle = decodeURIComponent(heroSubtitle.replace(/\+/g, ' '));
+                const decodedAgentName = decodeURIComponent(agentName.replace(/\+/g, ' '));
+                const decodedAgentTitle = decodeURIComponent(agentTitle.replace(/\+/g, ' '));
+                const decodedAgentIframeUrl = decodeURIComponent(agentIframeUrl);
+                const decodedProductTitle = decodeURIComponent(productTitle.replace(/\+/g, ' '));
+                const decodedProductDescription = decodeURIComponent(productDescription.replace(/\+/g, ' '));
+                const decodedFinalCtaTitle = decodeURIComponent(finalCtaTitle.replace(/\+/g, ' '));
+
+                // Update hidden data elements
+                document.getElementById('company-name').textContent = decodedCompanyName;
+                document.getElementById('hero-title').textContent = decodedHeroTitle;
+                document.getElementById('hero-subtitle').textContent = decodedHeroSubtitle;
+                document.getElementById('agent-name').textContent = decodedAgentName;
+                document.getElementById('agent-title').textContent = decodedAgentTitle;
+                document.getElementById('agent-iframe-url').textContent = decodedAgentIframeUrl;
+                document.getElementById('agent-iframe').src = decodedAgentIframeUrl;
+                document.getElementById('product-title').textContent = decodedProductTitle;
+                document.getElementById('product-description').textContent = decodedProductDescription;
+                document.getElementById('finalCta-title').textContent = decodedFinalCtaTitle;
+
+            }
+        }
+
+        // Lägg bara till detta i slutet:
+        window.addEventListener('load', parseURLParameters);
+        window.addEventListener('hashchange', parseURLParameters);
+
+        // Kör direkt om sidan redan är laddad
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', parseURLParameters);
+        } else {
+            parseURLParameters();
+        }
+
+    </script>
+</body>
+
+</html>

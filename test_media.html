@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test - Media Filer</title>
+</head>
+
+<body>
+    <h1>Test av Media-filer</h1>
+
+    <h2>Audio Test</h2>
+    <p>Filsökväg: <code>assets/audio/Intro%20AI.m4a</code></p>
+    <audio controls style="width: 100%;">
+        <source src="assets/audio/Intro%20AI.m4a" type="audio/mp4">
+        <source src="assets/audio/Intro%20AI.m4a" type="audio/x-m4a">
+        Din webbläsare stöder inte ljudspelaren.
+    </audio>
+
+    <hr>
+
+    <h2>Image Test</h2>
+    <p>Filsökväg: <code>assets/images/Intro%20AI%20Infographic.png</code></p>
+    <img src="assets/images/Intro%20AI%20Infographic.png" alt="Infographic"
+        style="max-width: 100%; border: 1px solid #ccc;">
+
+    <hr>
+
+    <h2>Alternativa sökvägar (utan URL-encoding)</h2>
+    <h3>Audio (utan %20)</h3>
+    <audio controls style="width: 100%;">
+        <source src="assets/audio/Intro AI.m4a" type="audio/mp4">
+        Din webbläsare stöder inte ljudspelaren.
+    </audio>
+
+    <h3>Image (utan %20)</h3>
+    <img src="assets/images/Intro AI Infographic.png" alt="Infographic"
+        style="max-width: 100%; border: 1px solid #ccc;">
+</body>
+
+</html>
