@@ -1,11 +1,26 @@
 import sys
 import json
+import os
 import requests
 import re
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from pathlib import Path
 import traceback
 
-# notebooklm_mcp must be installed via pip (pip install notebooklm-mcp)
+# notebooklm_mcp must be installed via pip (pip install notebooklm-mcp-server)
+
+# --- Load cookies from environment variable if present ---
+_auth_env = os.environ.get("NOTEBOOKLM_AUTH_JSON")
+if _auth_env:
+    try:
+        _cache_dir = Path.home() / ".notebooklm-mcp"
+        _cache_dir.mkdir(exist_ok=True)
+        _auth_path = _cache_dir / "auth.json"
+        with open(_auth_path, "w") as f:
+            f.write(_auth_env)
+        print("Auth tokens loaded from NOTEBOOKLM_AUTH_JSON environment variable.")
+    except Exception as e:
+        print(f"Warning: Could not write auth tokens from env: {e}")
 
 try:
     from notebooklm_mcp.api_client import NotebookLMClient
@@ -15,6 +30,7 @@ except ImportError:
     sys.exit(1)
 
 NOTEBOOK_ID = "487b5803-0d02-4512-9e5f-0a6c7fd663ad"
+
 
 class AIBridgeHandler(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
