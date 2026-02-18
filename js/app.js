@@ -596,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 5. Fetch from Python Bridge
         try {
-            const response = await fetch('http://127.0.0.1:8000/query', {
+            const response = await fetch('https://ai-business-lab-v2-notebook-bridge.u7ysvb.easypanel.host/query', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
