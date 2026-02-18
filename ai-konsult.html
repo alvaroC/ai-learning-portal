@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Konsult | AI Learning Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ai-konsult.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="dark-theme">
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <h1>AI LEARNING HUB</h1>
+            </div>
+            <h2 class="subtitle"><span class="academy-name">Be an AI-Hero with SwedAI Academy</span></h2>
+        </div>
+    </header>
+
+    <main>
+        <div class="konsult-page">
+
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Tillbaka till kurser
+            </a>
+
+            <!-- Hero -->
+            <div class="konsult-hero">
+                <span class="hero-icon">💼</span>
+                <h1>AI-Konsult</h1>
+                <p>
+                    Du har lärt dig teorin i Classroom och fördjupat dig med AI-Mentorn.
+                    Nu är det dags att <strong>tillämpa kunskaperna på ditt eget problem</strong>.
+                    AI-Konsulten är din personliga strategipartner – tränad på hela SwedAI Academys ekosystem.
+                </p>
+                <a href="#" class="konsult-cta-btn disabled" id="gem-link">
+                    <i class="fas fa-rocket"></i>
+                    Öppna AI-Konsult
+                    <span class="coming-soon-badge">Kommer snart</span>
+                </a>
+            </div>
+
+            <!-- De fyra nivåerna -->
+            <p class="levels-title">Din läranderesa</p>
+            <div class="levels-grid">
+                <div class="level-card">
+                    <div class="level-number">Nivå 1</div>
+                    <span class="level-icon">🎙️</span>
+                    <h3>Admin Voice Agent</h3>
+                    <p>Navigera akademin med rösten. Administrativa frågor och översikt.</p>
+                </div>
+                <div class="level-card">
+                    <div class="level-number">Nivå 2</div>
+                    <span class="level-icon">📚</span>
+                    <h3>Classroom</h3>
+                    <p>Assimilera kunskap via kursmaterial, podcasts, quiz och rapporter.</p>
+                </div>
+                <div class="level-card">
+                    <div class="level-number">Nivå 3</div>
+                    <span class="level-icon">🤖</span>
+                    <h3>AI-Mentor</h3>
+                    <p>Fördjupa och förstå i realtid. Ställ frågor om kursmaterialet.</p>
+                </div>
+                <div class="level-card active">
+                    <div class="active-badge">Du är här</div>
+                    <div class="level-number">Nivå 4</div>
+                    <span class="level-icon">💼</span>
+                    <h3>AI-Konsult</h3>
+                    <p>Tillämpa kunskaperna på ditt eget affärsproblem. Strategisk rådgivning.</p>
+                </div>
+            </div>
+
+            <!-- Dela i Community -->
+            <div class="share-section">
+                <h2><i class="fab fa-discord" style="color:#5865f2"></i> Dela i Community</h2>
+                <p class="share-desc">Jobba med AI-Konsulten i Gem, klistra sedan in din fråga och svaret här för att
+                    dela med communityn på Discord.</p>
+
+                <div class="share-field">
+                    <label><i class="fas fa-question-circle"></i> Din frågeställning</label>
+                    <textarea id="share-question" rows="3" placeholder="Vad frågade du AI-Konsulten?"></textarea>
+                </div>
+
+                <div class="share-field">
+                    <label><i class="fas fa-lightbulb"></i> Svar från AI-Konsulten</label>
+                    <textarea id="share-answer" rows="6" placeholder="Klistra in svaret från Gem här..."></textarea>
+                </div>
+
+                <div class="share-actions">
+                    <button class="share-discord-btn" id="share-btn" onclick="shareToDiscord()">
+                        <i class="fab fa-discord"></i> Dela i #ai-learning-hub
+                    </button>
+                    <span class="share-status" id="share-status"></span>
+                </div>
+            </div>
+
+            <!-- Vad gör AI-Konsulten -->
+
+            <div class="what-section">
+                <h2>🎯 Vad gör AI-Konsulten?</h2>
+                <ul class="what-list">
+                    <li>
+                        <span class="icon">🧠</span>
+                        <span>Tränad på <strong>hela SwedAI Academys ekosystem</strong> – alla kurser, metoder och
+                            verktyg</span>
+                    </li>
+                    <li>
+                        <span class="icon">💡</span>
+                        <span>Ger <strong>strategiska rekommendationer</strong> baserade på ditt specifika
+                            affärsproblem</span>
+                    </li>
+                    <li>
+                        <span class="icon">🔗</span>
+                        <span>Kopplar ihop kunskap från <strong>flera kurser</strong> för ett helhetsperspektiv</span>
+                    </li>
+                    <li>
+                        <span class="icon">📊</span>
+                        <span>Tänker i <strong>ROI och affärsnytta</strong> – inte bara teori</span>
+                    </li>
+                    <li>
+                        <span class="icon">🚀</span>
+                        <span>Föreslår <strong>konkreta nästa steg</strong> du kan implementera direkt</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 AI Learning Hub | SwedAI Academy</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { supabase } from './js/supabase.js';
+
+        const N8N_DISCORD_WEBHOOK = 'https://ai-business-lab-v2-n8n.u7ysvb.easypanel.host/webhook/discord-share-consultant';
+
+        async function getUserName() {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) return 'En elev';
+            const { data: profile } = await supabase.from('profiles').select('full_name').eq('id', user.id).single();
+            return profile?.full_name || user.email?.split('@')[0] || 'En elev';
+        }
+
+        window.shareToDiscord = async function () {
+            const question = document.getElementById('share-question').value.trim();
+            const answer = document.getElementById('share-answer').value.trim();
+            const status = document.getElementById('share-status');
+            const btn = document.getElementById('share-btn');
+
+            if (!question || !answer) {
+                status.textContent = '⚠️ Fyll i både fråga och svar.';
+                status.className = 'share-status error';
+                return;
+            }
+
+            btn.disabled = true;
+            status.textContent = 'Skickar...';
+            status.className = 'share-status';
+
+            try {
+                const name = await getUserName();
+                const res = await fetch(N8N_DISCORD_WEBHOOK, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, question, answer })
+                });
+
+                if (res.ok) {
+                    status.textContent = '✅ Delat i #ai-learning-hub!';
+                    status.className = 'share-status success';
+                    document.getElementById('share-question').value = '';
+                    document.getElementById('share-answer').value = '';
+                } else {
+                    throw new Error('Serverfel');
+                }
+            } catch (e) {
+                status.textContent = '❌ Något gick fel. Försök igen.';
+                status.className = 'share-status error';
+            } finally {
+                btn.disabled = false;
+            }
+        };
+    </script>
+</body>
+
+</html>

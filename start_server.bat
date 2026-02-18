@@ -1,8 +1,8 @@
 @echo off
-echo Starting local web server...
+echo Starting AI Bridge server...
 echo.
-echo Open your browser and go to: http://localhost:8000
+echo AI Bridge running on: http://localhost:8000
 echo.
 echo Press Ctrl+C to stop the server
 echo.
-python -m http.server 8000
+python py\ai_bridge.py

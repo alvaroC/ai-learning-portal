@@ -1,28 +1,54 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="sv">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Learning Hub | Introduktion till AI</title>
+    <title>AI Learning Hub | SwedAI Academy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="updates.css">
-    <link rel="stylesheet" href="notion.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true });</script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- marked.min.js loaded once here only -->
+    <style>
+        .markmap-container {
+            min-height: 500px;
+            /* Start at 500px */
+            height: auto;
+            /* GROW as the map expands! */
+            width: 100%;
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            overflow: visible;
+            /* Ensure nothing gets clipped */
+        }
+
+        .markmap>svg {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            /* Match the container */
+        }
+    </style>
+
 </head>
 
 <body class="dark-theme">
+
     <header class="main-header">
         <div class="container">
             <div class="logo">
                 <span class="logo-icon">🚀</span>
-                <h1>AI Learning Hub</h1>
+                <h1>AI LEARNING HUB</h1>
             </div>
             <h2 class="subtitle"><span class="academy-name">Be an AI-Hero with SwedAI Academy</span></h2>
         </div>
@@ -35,24 +61,47 @@
                 <li><button class="nav-btn active" data-module="dashboard"><i
                             class="fas fa-th-large"></i>Dashboard</button></li>
 
-                <li><button class="nav-btn ai-konsult-btn" data-module="ai-konsult">
-                        <img src="assets/ui/ai-konsult-avatar.png" alt="AI-Konsult" class="konsult-avatar"
-                            onerror="this.style.display='none'">
-                        AI-Konsult
-                    </button></li>
+                <li><a href="ai-konsult.html" class="nav-btn ai-konsult-btn">
+                        <i class="fas fa-briefcase"></i> AI-Konsult
+                    </a></li>
 
                 <li><a href="https://ghl-academy.com" target="_blank" class="nav-btn academy-btn">SwedAI Academy</a>
                 </li>
 
-                <li><a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank"
-                        class="nav-btn community-btn">Community</a></li>
+                <li><a href="https://discord.gg/fVfjFPYwMf" target="_blank" class="nav-btn community-btn"><i
+                            class="fab fa-discord"></i> Community</a></li>
 
+                <li><a href="profile.html" class="nav-btn" style="display:flex;align-items:center;gap:0.4rem;">
+                        <i class="fas fa-user-circle"></i> Min Profil</a></li>
 
+                <li><button class="nav-btn" onclick="handleLogout()"
+                        style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#f87171;">
+                        <i class="fas fa-sign-out-alt"></i> Logga ut</button></li>
             </ul>
         </div>
     </nav>
 
-    <main id="app-content" class="container">
+    <!-- =====================================================
+         LOGIN OVERLAY
+         Shown by auth.js when no Supabase session exists.
+         Hidden automatically when user is logged in.
+    ====================================================== -->
+    <div id="login-overlay">
+        <div class="login-card">
+            <div class="login-logo">🚀</div>
+            <h1>AI Learning Hub</h1>
+            <p class="login-subtitle">SwedAI Academy – Logga in för att fortsätta</p>
+
+            <div class="login-form">
+                <input type="email" id="login-email" class="login-input" placeholder="Din e-postadress" />
+                <input type="password" id="login-password" class="login-input" placeholder="Lösenord" />
+                <p id="login-error" class="login-error"></p>
+                <button class="login-btn" onclick="handleLogin()">Logga in</button>
+            </div>
+        </div>
+    </div>
+
+    <main id="main-content" class="container">
         <!-- Content will be rendered here by app.js -->
         <div class="loading">
             <div class="spinner"></div>
@@ -62,15 +111,17 @@
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2026 AI Learning Hub | Baserat på realtidsdata från NotebookLM</p>
+            <p>&copy; 2026 AI Learning Hub | SwedAI Academy</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="data.js"></script>
+    <!-- Scripts (type="module" enables ES imports, required for Supabase) -->
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script src="js/data.js"></script>
     <!-- Course Data (Content) -->
-    <script src="course_data.js"></script>
-    <script src="app.js"></script>
+    <script src="js/course_data.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,23 @@
+# Environment variables (NEVER upload to GitHub)
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# NotebookLM tokens/cookies (sensitive!)
+*.json.bak
+tokens.json
+cached_tokens*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Node (if added later)
+node_modules/

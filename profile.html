@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Profil | AI Learning Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Force dark theme on this page */
+        body {
+            background-color: #0f172a !important;
+            color: #f1f5f9 !important;
+        }
+
+        /* ── Profile page specific styles ── */
+        .profile-page {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem 4rem;
+        }
+
+        .profile-hero {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(52, 211, 153, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #34d399);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .profile-info h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0 0 0.3rem;
+        }
+
+        .profile-info p {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 0 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .plan-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .profile-section {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-section h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0 0 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Progress grid */
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .progress-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+        }
+
+        .progress-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0 0 0.8rem;
+        }
+
+        .progress-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.4rem;
+        }
+
+        .progress-item .done {
+            color: #34d399;
+        }
+
+        .progress-item .todo {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Quiz results */
+        .quiz-result-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .quiz-result-row:last-child {
+            border-bottom: none;
+        }
+
+        .quiz-course-name {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .quiz-score {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #34d399;
+        }
+
+        .quiz-date {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Chat history */
+        .chat-row {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            align-items: flex-start;
+        }
+
+        .chat-row:last-child {
+            border-bottom: none;
+        }
+
+        .chat-role {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .chat-role.user {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+
+        .chat-role.assistant {
+            background: rgba(52, 211, 153, 0.2);
+            color: #34d399;
+        }
+
+        .chat-message {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+        }
+
+        .chat-time {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 1.5rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
+        }
+
+        /* Loading spinner */
+        .loading-inline {
+            text-align: center;
+            padding: 1rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Back button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            transition: color 0.2s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+        }
+
+        /* Logout button */
+        .logout-btn {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            margin-left: auto;
+        }
+
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.25);
+        }
+    </style>
+</head>
+
+<body class="dark-theme">
+
+    <!-- Header (same as index.html) -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <h1>AI LEARNING HUB</h1>
+            </div>
+            <h2 class="subtitle"><span class="academy-name">Be an AI-Hero with SwedAI Academy</span></h2>
+        </div>
+    </header>
+
+    <!-- LOGIN OVERLAY (same as index.html – auth.js controls it) -->
+    <div id="login-overlay">
+        <div class="login-card">
+            <div class="login-logo">🚀</div>
+            <h1>AI Learning Hub</h1>
+            <p class="login-subtitle">SwedAI Academy – Logga in för att fortsätta</p>
+            <div class="login-form">
+                <input type="email" id="login-email" class="login-input" placeholder="Din e-postadress" />
+                <input type="password" id="login-password" class="login-input" placeholder="Lösenord" />
+                <p id="login-error" class="login-error"></p>
+                <button class="login-btn" onclick="handleLogin()">Logga in</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN PROFILE CONTENT -->
+    <main id="main-content">
+        <div class="profile-page">
+
+            <!-- Back link + Logout -->
+            <div style="display:flex; align-items:center; margin-bottom:1.5rem;">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Tillbaka till kurser
+                </a>
+                <button class="logout-btn" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Logga ut
+                </button>
+            </div>
+
+            <!-- Hero: Profile info -->
+            <div class="profile-hero">
+                <div class="profile-avatar">👤</div>
+                <div class="profile-info">
+                    <h2 id="profile-name">Laddar...</h2>
+                    <p id="profile-email"></p>
+                    <span class="plan-badge" id="profile-plan">full access</span>
+                </div>
+            </div>
+
+            <!-- Section: Progress -->
+            <div class="profile-section">
+                <h3><i class="fas fa-book-open"></i> Mitt framsteg</h3>
+                <div class="progress-grid" id="progress-grid">
+                    <div class="loading-inline">Hämtar framsteg...</div>
+                </div>
+            </div>
+
+            <!-- Section: Quiz results -->
+            <div class="profile-section">
+                <h3><i class="fas fa-trophy"></i> Mina quiz-resultat</h3>
+                <div id="quiz-results-list">
+                    <div class="loading-inline">Hämtar resultat...</div>
+                </div>
+            </div>
+
+            <!-- Section: Recent chat history -->
+            <div class="profile-section">
+                <h3><i class="fas fa-comments"></i> Senaste AI-Mentor frågor</h3>
+                <div id="chat-history-list">
+                    <div class="loading-inline">Hämtar konversationer...</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 AI Learning Hub | SwedAI Academy</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/profile.js"></script>
+
+</body>
+
+</html>
