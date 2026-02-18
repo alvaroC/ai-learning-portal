@@ -1,2 +1,2 @@
-notebooklm-mcp
+notebooklm-mcp-server
 requests
