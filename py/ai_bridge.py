@@ -5,9 +5,7 @@ import re
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import traceback
 
-# Add the site-packages path to sys.path to ensure we can import notebooklm_mcp
-# Note: In a real environment, you might need to adjust this path
-sys.path.append(r'C:\Users\alvar\AppData\Local\Programs\Python\Python312\Lib\site-packages')
+# notebooklm_mcp must be installed via pip (pip install notebooklm-mcp)
 
 try:
     from notebooklm_mcp.api_client import NotebookLMClient
@@ -26,6 +24,13 @@ class AIBridgeHandler(BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
         self.end_headers()
+
+    def do_GET(self):
+        if self.path == '/health':
+            self._send_response({"status": "ok", "service": "AI Bridge"})
+        else:
+            self.send_response(404)
+            self.end_headers()
 
     def do_POST(self):
         if self.path == '/query':
